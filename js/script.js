@@ -24,29 +24,25 @@ let age = document.getElementById('userAge');
 const button = document.getElementById('button-gen');
 
 
-const userAge = parseInt(age.value);
-
-
-
 // Aggancio l'event listener al bottone
 button.addEventListener('click', function (){   
     // Prendo l'interno del contenuto dell'input 
     let kms = parseInt(kmRoute.value);
+    let userAge = parseInt(age.value);
 
     // Calcolo il prezzo del biglietto    
     let ticketPrice = kms * 0.21;
     let rounded = ticketPrice.toFixed(2) + '€';
-    console.log(rounded);
+    // console.log(rounded);
+
+    // Calcolo gli sconti in base all'età
+    if (userAge < 18) {
+        let finalPrice = (ticketPrice - ((ticketPrice * 20) / 100));
+        console.log(finalPrice.toFixed(2) + '€');
+    }else if (userAge > 65) {
+        let finalPrice = (ticketPrice - ((ticketPrice * 40) / 100));
+        console.log(finalPrice.toFixed(2) + '€');
+    }
+    
+
 }); 
-
-
-
-
-
-// if (userAge < 18) {
-//     let finalPrice = (ticketPrice - ((ticketPrice * 20) / 100));
-//     console.log(finalPrice.toFixed(2) + '€');
-// } else if (userAge > 65) {
-//     let finalPrice = (ticketPrice - ((ticketPrice * 40) / 100));
-//     console.log(finalPrice.toFixed(2) + '€');
-// }
