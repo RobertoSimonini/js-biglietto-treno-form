@@ -23,7 +23,7 @@ let kmRoute = document.getElementById('km-route');
 let age = document.getElementById('userAge');
 const button = document.getElementById('button-gen');
 const total = document.getElementById('total');
-const priceMessage = 'il prezzo del tuo biglietto è: ';
+// const priceMessage = 'il prezzo del tuo biglietto è: ';
 
 
 // Aggancio l'event listener al bottone
@@ -41,8 +41,8 @@ button.addEventListener('click', function (){
     }else if (userAge > 65) {
         ticketPrice *= 0.6;
     }
-
-    total.innerText = priceMessage + ticketPrice.toFixed(2) + '€';
+    
+    total.innerText = ticketPrice.toFixed(2) + '€';
 }); 
 
 
