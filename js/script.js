@@ -22,6 +22,8 @@ Il recap dei dati e l'output del prezzo finale, andranno quindi stampati in pagi
 let kmRoute = document.getElementById('km-route');
 let age = document.getElementById('userAge');
 const button = document.getElementById('button-gen');
+const total = document.getElementById('total');
+const priceMessage = 'il prezzo del tuo biglietto è: ';
 
 
 // Aggancio l'event listener al bottone
@@ -32,17 +34,15 @@ button.addEventListener('click', function (){
 
     // Calcolo il prezzo del biglietto    
     let ticketPrice = kms * 0.21;
-    let rounded = ticketPrice.toFixed(2) + '€';
-    // console.log(rounded);
 
     // Calcolo gli sconti in base all'età
     if (userAge < 18) {
-        let finalPrice = (ticketPrice - ((ticketPrice * 20) / 100));
-        console.log(finalPrice.toFixed(2) + '€');
+        ticketPrice *= 0.8;
     }else if (userAge > 65) {
-        let finalPrice = (ticketPrice - ((ticketPrice * 40) / 100));
-        console.log(finalPrice.toFixed(2) + '€');
+        ticketPrice *= 0.6;
     }
-    
 
+    total.innerText = priceMessage + ticketPrice.toFixed(2) + '€';
 }); 
+
+
