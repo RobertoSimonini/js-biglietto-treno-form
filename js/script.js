@@ -19,19 +19,25 @@ Il recap dei dati e l'output del prezzo finale, andranno quindi stampati in pagi
 */
 
 // Prendo gli imput dal DOM  
-const kmRoute = document.getElementById('km-route');
-const age = document.getElementById('userAge');
+let kmRoute = document.getElementById('km-route');
+let age = document.getElementById('userAge');
 const button = document.getElementById('button-gen');
 
-// Prendo l'interno del contenuto degli input 
-const kms = parseInt(kmRoute.value);
+
 const userAge = parseInt(age.value);
 
-// 2- Calcolo il prezzo del biglietto
-let ticketPrice = kms * 0.21;
 
-let rounded = ticketPrice.toFixed(2) + '€';
-// console.log(rounded);
+
+// Aggancio l'event listener al bottone
+button.addEventListener('click', function (){   
+    // Prendo l'interno del contenuto dell'input 
+    let kms = parseInt(kmRoute.value);
+
+    // Calcolo il prezzo del biglietto    
+    let ticketPrice = kms * 0.21;
+    let rounded = ticketPrice.toFixed(2) + '€';
+    console.log(rounded);
+}); 
 
 
 
