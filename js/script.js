@@ -21,23 +21,26 @@ Il recap dei dati e l'output del prezzo finale, andranno quindi stampati in pagi
 // Prendo gli imput dal DOM  
 const kmRoute = document.getElementById('km-route');
 const age = document.getElementById('userAge');
+const button = document.getElementById('button-gen');
 
 // Prendo l'interno del contenuto degli input 
 const kms = parseInt(kmRoute.value);
 const userAge = parseInt(age.value);
 
 // 2- Calcolo il prezzo del biglietto
-let ticketPrice = kmRoute * 0.21;
+let ticketPrice = kms * 0.21;
 
 let rounded = ticketPrice.toFixed(2) + '€';
 // console.log(rounded);
 
 
-// 3- Creo le condizioni di sconto in base all'età
-if (userAge < 18) {
-    let finalPrice = (ticketPrice - ((ticketPrice * 20) / 100));
-    console.log(finalPrice.toFixed(2) + '€');
-} else if (userAge > 65) {
-    let finalPrice = (ticketPrice - ((ticketPrice * 40) / 100));
-    console.log(finalPrice.toFixed(2) + '€');
-}
+
+
+
+// if (userAge < 18) {
+//     let finalPrice = (ticketPrice - ((ticketPrice * 20) / 100));
+//     console.log(finalPrice.toFixed(2) + '€');
+// } else if (userAge > 65) {
+//     let finalPrice = (ticketPrice - ((ticketPrice * 40) / 100));
+//     console.log(finalPrice.toFixed(2) + '€');
+// }
