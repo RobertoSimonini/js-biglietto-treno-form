@@ -7,64 +7,6 @@
 }
 
 /* Generics  */
-
-.container {
-    width: 65%;
-    margin: 0 auto;
+p {
+    font-weight: normal;
 }
-
-body {
-    background-color: rgba(145, 69, 145, 0.5);
-}
-
-img {
-    display: block;
-    max-width: 100%;
-}
-
-.form {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    background-color: white;
-    padding: 50px 25px;
-    border-radius: 10rem;
-
-}
-
-#calculate-title {
-    color: white;
-    font-size: 50px;
-    text-align: center;
-    padding: 25px;
-}
-
-label {
-    margin-right: 5px;
-}
-
-input {
-    margin-right: 5rem;
-    padding: 10px 15px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: ;
-}
-
-#button-gen {
-    color: black;
-    cursor: pointer;
-    padding: 10px 15px;
-    text-decoration: none;
-    background-color: gray;
-    margin-right: 15px;
-}
-
-#total {
-    padding: 25px;
-    color: rgb(0, 128, 255);
-}
-
-/* Utils  */

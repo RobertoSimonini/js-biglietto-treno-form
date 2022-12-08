@@ -1,48 +1,81 @@
 console.log('OK JS');
 
 /*
-! Scrivere un programma che chieda all’utente:
-! Il numero di chilometri da percorrere
-! Età del passeggero
-!Sulla base di queste informazioni dovrà calcolare il prezzo totale del biglietto di viaggio, secondo le seguenti regole:
-! il prezzo del biglietto è definito in base ai km (0.21 € al km)
-! va applicato uno sconto del 20% per i minorenni
-! va applicato uno sconto del 40% per gli over 65.
-
-
-MILESTONE 1:
-Iniziamo implementando il programma senza alcuna estetica: usando esclusivamente due input e un bottone (non stilizzati), realizziamo le specifiche scritte sopra. La risposta finale (o output) sarà anch’essa da scrivere in console.
-
-MILESTONE 2:
-Solo una volta che il milestone 1 sarà completo e funzionante allora realizzeremo un form in pagina in cui l’utente potrà inserire i dati e visualizzare il calcolo finale con il prezzo.
-Il recap dei dati e l'output del prezzo finale, andranno quindi stampati in pagina (il prezzo dovrà essere formattato con massimo due decimali, per indicare i centesimi sul prezzo). Questo richiederà un minimo di ricerca.
+? Scrivere un programma che chieda all’utente:
+? Il numero di chilometri da percorrere
+? Età del passeggero
+?Sulla base di queste informazioni dovrà calcolare il prezzo totale del biglietto di viaggio, secondo le seguenti regole:
+? il prezzo del biglietto è definito in base ai km (0.21 € al km)
+? va applicato uno sconto del 20% per i minorenni
+? va applicato uno sconto del 40% per gli over 65.
 */
 
-// Prendo gli imput dal DOM  
-let kmRoute = document.getElementById('km-route');
-let age = document.getElementById('userAge');
-const button = document.getElementById('button-gen');
-const total = document.getElementById('total');
-// const priceMessage = 'il prezzo del tuo biglietto è: ';
+// Prendo gli elementi dal Form  
 
+const elementName = document.getElementById('username');
+const elementKms = document.getElementById('kms');
+const elementAge = document.getElementById('age');
+const calculateButton = document.getElementById('calc-button');
 
-// Aggancio l'event listener al bottone
-button.addEventListener('click', function (){   
-    // Prendo l'interno del contenuto dell'input 
-    let kms = parseInt(kmRoute.value);
-    let userAge = parseInt(age.value);
+// Prendo gli elementi dal ticekt 
 
-    // Calcolo il prezzo del biglietto    
-    let ticketPrice = kms * 0.21;
+const ticketSection = document.getElementById('ticket-infos');
+const elementPassengerName = document.getElementById('your-name');
+const elementRate = document.getElementById('rate');
+const elementCoach = document.getElementById('coach');
+const elementPrice = document.getElementById('price');
 
-    // Calcolo gli sconti in base all'età
-    if (userAge < 18) {
-        ticketPrice *= 0.8;
-    }else if (userAge > 65) {
-        ticketPrice *= 0.6;
+// Ora metto l'event listener al Button 
+
+calculateButton.addEventListener("click", function(){
+
+    // Recupero i valori interni agli input 
+    const nameValue = elementName.value.trim();
+    const kmsValue = parseInt(elementKms.value.trim());
+    const ageValue = elementAge.value;
+
+    // ! Validation
+
+    if (!nameValue || isNaN(kmsValue) || kmsValue < 1) {
+        alert('Insert Valid Values!!');
+        return;   
     }
     
-    total.innerText = ticketPrice.toFixed(2) + '€';
-}); 
+    // Calcolo del prezzo del ticket senza sconti 
+    let rate;
+    let price = 0.21 * kmsValue;
+    rate = 'Ordinary rate';
+    
+    // Calcolo gli eventuali sconti dei ticekt 
 
+    if (ageValue === 'underage') {
+        price *= 0.8;
+        rate = 'Discounted rate Underage';
 
+    } else if (ageValue === 'Over-65') {
+         price *= 0.6;
+         rate = 'Discounted rate over-65';
+    }
+
+    // Arrotondo a 2 decimali il prezzo
+
+    price = price.toFixed(2) + '€';
+    console.log(price);
+
+    // Creao la variabile  per il numero di carrozza 
+
+    let coach = Math.floor(Math.random() * (10000 - 9000 + 1)) - 1;
+
+    // Stampo gli elementi nel biglietto in pagina 
+
+    elementPassengerName.innerText = nameValue;
+    elementRate.innerText = rate;
+    elementCoach.innerText = coach;
+    elementPrice.innerText = price;
+
+    // Rimuovo il Display none dal ticekt 
+
+    ticketSection.classList.remove('d-none');
+
+    
+});
